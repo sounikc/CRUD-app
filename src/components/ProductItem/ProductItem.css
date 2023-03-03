@@ -1,0 +1,21 @@
+.product-items{
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 20px;
+    margin-top: 1%;
+    background-color: #3f3838;
+    box-shadow: burlywood;
+    color: #fff;
+    align-items: center;
+}
+h5{
+    color: #a5abad;
+}
+span{
+    padding: 5px;
+    background-color: #205354;
+    border-radius: 16px;
+}
+.icon-div{
+    cursor: pointer;
+}

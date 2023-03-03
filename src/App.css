@@ -6,6 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+.container-fluid {
+  padding-top: 5%;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
