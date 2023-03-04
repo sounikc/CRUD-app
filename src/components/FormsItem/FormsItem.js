@@ -1,12 +1,16 @@
-import { useState } from 'react';
-import { Row, Col, Button, Form, Card } from 'react-bootstrap';
+import {useState } from 'react';
+import { Row, Col, Button, Form, Card} from 'react-bootstrap';
 import './FormsItem.css';
 // import ProductItem from '../ProductItem/ProductItem';
 import { BsFillPencilFill, BsTrash } from "react-icons/bs";
 import '../ProductItem/ProductItem.css';
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer, toast } from 'react-toastify';
+
+
 
 function FormsItem() {
-    const [products] = useState([
+    const products = [
         {
             id: "1",
             name: "iPhone",
@@ -22,7 +26,7 @@ function FormsItem() {
             name: "Table Chair Set",
             price: "105.00"
         }
-    ]);
+    ];
     const [data, setData] = useState(products);
     const [currentId, setCurrentId] = useState('');
     const [currentName, setCurrentName] = useState('');
@@ -57,7 +61,7 @@ function FormsItem() {
         }
         dataArray.push(newItem);
         setData(dataArray);
-
+        showSuccessToast(currentName);
         setCurrentId('');
         setCurrentName('');
         setCurrentPrice('');
@@ -69,10 +73,30 @@ function FormsItem() {
         let dataArray = [...data];
         dataArray.splice(indx, 1);
         setData(dataArray);
+        showWarnToast(indx);
     }
+
+    const showSuccessToast = (currentName) => {
+        toast.success(`${currentName} Added Successsfully`, {
+            icon: "🚀",
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+        });
+    };
+
+    const showWarnToast = (indx) => {
+        console.log(data);
+        toast.warn(`${data[indx].name} Deleted Successsfully`, {
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+        });
+    };
 
     return (
         <div>
+            <ToastContainer />
             <Card className='card-style'>
                 <Card.Body>
                     <Row>
@@ -106,7 +130,7 @@ function FormsItem() {
 
 
             {/*<ProductItem products={data}/>*/
-
+                
                 data.map((product, index) => {
                     return (
                         <Row className='product-items'>
